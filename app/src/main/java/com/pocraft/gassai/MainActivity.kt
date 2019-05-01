@@ -3,7 +3,7 @@ package com.pocraft.gassai
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
+import com.pocraft.gassai.util.lazyViewModel
 import com.pocraft.gassai.viewmodel.TimeTableViewModel
 import dagger.android.AndroidInjection
 import dagger.android.support.DaggerAppCompatActivity
@@ -14,9 +14,7 @@ class MainActivity : DaggerAppCompatActivity() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    val vm: TimeTableViewModel by lazy {
-        ViewModelProviders.of(this, viewModelFactory)[TimeTableViewModel::class.java]
-    }
+    private val vm: TimeTableViewModel by lazyViewModel { viewModelFactory }
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
