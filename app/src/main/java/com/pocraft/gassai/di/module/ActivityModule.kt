@@ -1,13 +1,11 @@
 package com.pocraft.gassai.di.module
 
-import android.app.Activity
+import com.pocraft.gassai.MainActivity
 import dagger.Module
-import dagger.Provides
+import dagger.android.ContributesAndroidInjector
 
 @Module
-class ActivityModule (private var activity: Activity) {
-    @Provides
-    fun provideActivity(): Activity {
-        return activity
-    }
+abstract class ActivityModule () {
+    @ContributesAndroidInjector
+    abstract fun bindMainActivity(): MainActivity
 }

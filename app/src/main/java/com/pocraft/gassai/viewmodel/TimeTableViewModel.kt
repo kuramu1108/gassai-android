@@ -1,5 +1,8 @@
 package com.pocraft.gassai.viewmodel
 
-class TimeTableViewModel: BaseViewModel() {
+import javax.inject.Inject
 
+
+class TimeTableViewModel @Inject constructor(): BaseViewModel() {
+    fun getName() = "it works"
 }
