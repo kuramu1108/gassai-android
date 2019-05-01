@@ -1,5 +1,6 @@
 package com.pocraft.gassai
 
+import android.app.AlertDialog
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.lifecycle.ViewModelProvider
@@ -41,6 +42,7 @@ class MainActivity : DaggerAppCompatActivity() {
 
         button_test.setOnClickListener {
             button_test.text = vm.getName()
+            textView_test.text = vm.getRepo().toString()
         }
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }
