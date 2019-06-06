@@ -7,11 +7,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.lifecycle.ViewModelProvider
 import com.pocraft.gassai.R
 import com.pocraft.gassai.util.lazyViewModel
-import com.pocraft.gassai.view.ui.MainActivityUI
+import com.pocraft.gassai.view.activity.ui.MainActivityUI
 import com.pocraft.gassai.viewmodel.TimeTableViewModel
 import dagger.android.AndroidInjection
 import dagger.android.support.DaggerAppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.setContentView
 import javax.inject.Inject
 
