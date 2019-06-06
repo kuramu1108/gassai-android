@@ -45,12 +45,12 @@ class MainActivity : DaggerAppCompatActivity(), BottomNavigationView.OnNavigatio
         super.onCreate(savedInstanceState)
         ui = MainActivityUI()
         ui.setContentView(this)
-//        setContentView(R.layout.activity_main)
 
-//        button_test.setOnClickListener {
-//            button_test.text = vm.getName()
-//            textView_test.text = vm.getRepo().toString()
-//        }
+
+        ui.fetchButton.setOnClickListener {
+            ui.fetchButton.text = vm.getName()
+            ui.resultText.text = vm.getRepo().toString()
+        }
 //        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }
 }
