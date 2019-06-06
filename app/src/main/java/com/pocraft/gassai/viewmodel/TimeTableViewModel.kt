@@ -1,5 +1,6 @@
 package com.pocraft.gassai.viewmodel
 
+import androidx.lifecycle.MutableLiveData
 import com.pocraft.gassai.api.ApiService
 import kotlinx.coroutines.*
 import javax.inject.Inject
@@ -17,8 +18,10 @@ class TimeTableViewModel @Inject constructor(): BaseViewModel(), CoroutineScope 
 
     fun getName() = "it works"
 
+    val repoSize = MutableLiveData(0)
+
     fun getRepo() = runBlocking {
-        apiService.getRepository("kuramu1108").await().size
+        repoSize.value = apiService.getRepository("kuramu1108").await().size
     }
 
     override fun onCleared() {

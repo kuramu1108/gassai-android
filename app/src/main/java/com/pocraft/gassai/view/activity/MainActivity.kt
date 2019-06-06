@@ -2,6 +2,7 @@ package com.pocraft.gassai.view.activity
 
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.lifecycle.Observer
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.lifecycle.ViewModelProvider
 import com.pocraft.gassai.R
@@ -23,20 +24,20 @@ class MainActivity : DaggerAppCompatActivity(), BottomNavigationView.OnNavigatio
     private lateinit var ui: MainActivityUI
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
+        return when (item.itemId) {
             R.id.navigation_home -> {
                 ui.textView.setText(R.string.title_home)
-                return true
+                true
             }
             R.id.navigation_dashboard -> {
                 ui.textView.setText(R.string.title_dashboard)
-                return true
+                true
             }
             R.id.navigation_notifications -> {
                 ui.textView.setText(R.string.title_notifications)
-                return true
+                true
             }
-            else -> return false
+            else -> false
         }
     }
 
@@ -46,10 +47,14 @@ class MainActivity : DaggerAppCompatActivity(), BottomNavigationView.OnNavigatio
         ui = MainActivityUI()
         ui.setContentView(this)
 
+        vm.repoSize.observe(this, Observer {
+            ui.resultText.text = it.toString()
+        })
 
         ui.fetchButton.setOnClickListener {
             ui.fetchButton.text = vm.getName()
-            ui.resultText.text = vm.getRepo().toString()
+//            ui.resultText.text = vm.getRepo().toString()
+            vm.getRepo()
         }
 //        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }
