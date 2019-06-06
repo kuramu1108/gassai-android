@@ -3,6 +3,7 @@ package com.pocraft.gassai.view.activity.ui
 import android.graphics.Color
 import android.widget.Button
 import android.widget.TextView
+import androidx.core.view.marginBottom
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.pocraft.gassai.R
 import com.pocraft.gassai.util.bottomNavigationView
@@ -40,7 +41,6 @@ class MainActivityUI: AnkoComponent<MainActivity> {
                 id = R.id.container
             }.lparams(width = matchParent) {
                 alignParentTop()
-                above(bottomNavigation)
             }
 
             bottomNavigation = bottomNavigationView {

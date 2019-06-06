@@ -5,6 +5,9 @@ import android.view.MenuItem
 import androidx.lifecycle.Observer
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.pocraft.gassai.R
 import com.pocraft.gassai.util.lazyViewModel
 import com.pocraft.gassai.view.activity.ui.MainActivityUI
@@ -20,24 +23,12 @@ class MainActivity : DaggerAppCompatActivity(), BottomNavigationView.OnNavigatio
 
     private val vm: TimeTableViewModel by lazyViewModel { viewModelFactory }
 
+    private val navHost by lazy { NavHostFragment.create(R.navigation.nav_graph) }
+
     private lateinit var ui: MainActivityUI
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.navigation_home -> {
-                ui.textView.setText(R.string.title_home)
-                true
-            }
-            R.id.navigation_dashboard -> {
-                ui.textView.setText(R.string.title_dashboard)
-                true
-            }
-            R.id.navigation_notifications -> {
-                ui.textView.setText(R.string.title_notifications)
-                true
-            }
-            else -> false
-        }
+        return false
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,6 +36,11 @@ class MainActivity : DaggerAppCompatActivity(), BottomNavigationView.OnNavigatio
         super.onCreate(savedInstanceState)
         ui = MainActivityUI()
         ui.setContentView(this)
+
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.container, navHost)
+            .setPrimaryNavigationFragment(navHost)
+            .commit()
 
         vm.repoSize.observe(this, Observer {
             ui.resultText.text = it.toString()
@@ -55,6 +51,14 @@ class MainActivity : DaggerAppCompatActivity(), BottomNavigationView.OnNavigatio
 //            ui.resultText.text = vm.getRepo().toString()
             vm.getRepo()
         }
-//        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val navController = navHost.findNavController()
+        ui.bottomNavigation.setupWithNavController(navController)
+//        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+//
+//        }
     }
 }
