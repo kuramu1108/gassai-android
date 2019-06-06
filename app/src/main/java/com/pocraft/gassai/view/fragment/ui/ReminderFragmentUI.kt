@@ -1,6 +1,5 @@
 package com.pocraft.gassai.view.fragment.ui
 
-import android.view.View
 import com.pocraft.gassai.R
 import com.pocraft.gassai.view.fragment.ReminderFragment
 import org.jetbrains.anko.AnkoComponent

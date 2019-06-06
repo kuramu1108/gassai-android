@@ -1,6 +1,7 @@
 package com.pocraft.gassai.util
 
 import android.view.ViewManager
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
@@ -11,6 +12,12 @@ import org.jetbrains.anko.custom.ankoView
 inline fun <reified T: ViewModel> DaggerAppCompatActivity.lazyViewModel(crossinline viewModelFactory: () -> ViewModelProvider.Factory): Lazy<T> {
     return lazy {
         ViewModelProviders.of(this, viewModelFactory.invoke())[T::class.java]
+    }
+}
+
+inline fun <reified T: ViewModel> Fragment.lazyViewModel(crossinline viewModelFactory: () -> ViewModelProvider.Factory): Lazy<T> {
+    return lazy {
+        ViewModelProviders.of(activity!!, viewModelFactory.invoke())[T::class.java]
     }
 }
 

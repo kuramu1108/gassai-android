@@ -5,10 +5,43 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import com.pocraft.gassai.di.module.ViewModelFactory
+import com.pocraft.gassai.util.lazyViewModel
 import com.pocraft.gassai.view.fragment.ui.HomeFragmentUI
+import com.pocraft.gassai.viewmodel.TimeTableViewModel
+
+import dagger.android.support.AndroidSupportInjection
 import org.jetbrains.anko.AnkoContext
+import javax.inject.Inject
 
 class HomeFragment: Fragment() {
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-            HomeFragmentUI().createView(AnkoContext.create(inflater.context, this, false))
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+    private val vm by lazyViewModel<TimeTableViewModel> { viewModelFactory }
+
+    private lateinit var ui: HomeFragmentUI
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidSupportInjection.inject(this)
+        super.onCreate(savedInstanceState)
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        ui = HomeFragmentUI()
+        return ui.createView(AnkoContext.create(inflater.context, this, false))
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        vm.repoSize.observe(viewLifecycleOwner, Observer {
+            ui.resultText.text = it.toString()
+        })
+
+        ui.fetchButton.setOnClickListener {
+            ui.fetchButton.text = vm.getName()
+            vm.getRepo()
+        }
+    }
 }

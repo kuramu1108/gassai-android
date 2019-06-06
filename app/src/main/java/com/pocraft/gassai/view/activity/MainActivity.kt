@@ -42,15 +42,15 @@ class MainActivity : DaggerAppCompatActivity(), BottomNavigationView.OnNavigatio
             .setPrimaryNavigationFragment(navHost)
             .commit()
 
-        vm.repoSize.observe(this, Observer {
-            ui.resultText.text = it.toString()
-        })
-
-        ui.fetchButton.setOnClickListener {
-            ui.fetchButton.text = vm.getName()
-//            ui.resultText.text = vm.getRepo().toString()
-            vm.getRepo()
-        }
+//        vm.repoSize.observe(this, Observer {
+//            ui.resultText.text = it.toString()
+//        })
+//
+//        ui.fetchButton.setOnClickListener {
+//            ui.fetchButton.text = vm.getName()
+////            ui.resultText.text = vm.getRepo().toString()
+//            vm.getRepo()
+//        }
     }
 
     override fun onStart() {

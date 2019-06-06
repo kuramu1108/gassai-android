@@ -4,4 +4,6 @@
     <item name="text_view" type="id"/>
     <item name="fetch_button" type="id"/>
     <item name="result_text_view" type="id"/>
+    <item name="team_ui_name" type="id"/>
+    <item name="team_ui_description" type="id"/>
 </resources>
