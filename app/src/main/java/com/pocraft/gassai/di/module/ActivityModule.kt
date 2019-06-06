@@ -1,6 +1,6 @@
 package com.pocraft.gassai.di.module
 
-import com.pocraft.gassai.MainActivity
+import com.pocraft.gassai.view.activity.MainActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
