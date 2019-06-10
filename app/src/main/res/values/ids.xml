@@ -6,4 +6,5 @@
     <item name="result_text_view" type="id"/>
     <item name="team_ui_name" type="id"/>
     <item name="team_ui_description" type="id"/>
+    <item name="toolbar" type="id"/>
 </resources>
