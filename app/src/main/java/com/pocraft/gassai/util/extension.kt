@@ -3,7 +3,6 @@ package com.pocraft.gassai.util
 import android.util.TypedValue
 import android.view.View
 import android.view.ViewManager
-import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -11,7 +10,6 @@ import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.pocraft.gassai.R
 import dagger.android.support.DaggerAppCompatActivity
-import org.jetbrains.anko.attr
 import org.jetbrains.anko.custom.ankoView
 
 inline fun <reified T: ViewModel> DaggerAppCompatActivity.lazyViewModel(crossinline viewModelFactory: () -> ViewModelProvider.Factory): Lazy<T> {
@@ -29,9 +27,6 @@ inline fun <reified T: ViewModel> Fragment.lazyViewModel(crossinline viewModelFa
 // Anko extensions
 inline fun ViewManager.bottomNavigationView(init: BottomNavigationView.() -> Unit = {}) =
         ankoView({BottomNavigationView(it)}, theme = 0, init = init)
-
-//inline fun ViewManager.cardView(init: CardView.() -> Unit = {}) =
-//        ankoView({CardView(it)}, theme = 0, init = init)
 
 fun View.actionBarSize(): Int {
     val tv = TypedValue()

@@ -2,33 +2,48 @@ package com.pocraft.gassai.view.component
 
 import android.graphics.Color
 import android.view.ViewGroup
+import android.widget.ImageView
 import com.pocraft.gassai.R
-//import com.pocraft.gassai.util.cardView
 import org.jetbrains.anko.*
 import org.jetbrains.anko.cardview.v7.cardView
 
 class TeamUI: AnkoComponent<ViewGroup> {
     override fun createView(ui: AnkoContext<ViewGroup>) = with(ui) {
         cardView {
-            verticalLayout {
-                textView {
-                    id = R.id.team_ui_name
-                    textColor = Color.BLACK
-                    textSize = 18f
-                }.lparams(width = matchParent) {
-                    padding = dip(16)
+            relativeLayout {
+                val teamImage = imageView (R.drawable.test){
+                    id = R.id.team_image
+                    scaleType = ImageView.ScaleType.CENTER_CROP
+                }.lparams(width = dip(120), height = dip(75)) {
                 }
 
-                textView {
-                    id = R.id.team_ui_description
-                }.lparams(width = matchParent) {
-                    marginStart = dip(16)
+                val teamDetail = verticalLayout {
+                    textView {
+                        id = R.id.team_ui_name
+                        textColor = Color.BLACK
+                        textSize = 18f
+                    }.lparams(width = matchParent) {
+                        marginStart = dip(16)
+                    }
+
+                    textView {
+                        id = R.id.team_ui_description
+                    }.lparams(width = matchParent) {
+                        marginStart = dip(16)
+                    }
+                }.lparams(height = matchParent) {
+                    rightOf(teamImage)
                 }
 
-
-//                setPadding(dip(32), dip(16), dip(16), dip(16))
+                imageButton(R.drawable.ic_favorite_border_black_24dp) {
+                    id = R.id.team_fav_button
+                    backgroundColor = Color.TRANSPARENT
+                }.lparams(width = dip(30), height = dip(30)) {
+                    centerVertically()
+                    alignParentRight()
+                    marginEnd = dip(8)
+                }
             }.lparams(width = matchParent, height = matchParent) {
-                padding = dip(8)
             }
 
             radius = dip(6).toFloat()

@@ -7,4 +7,6 @@
     <item name="team_ui_name" type="id"/>
     <item name="team_ui_description" type="id"/>
     <item name="toolbar" type="id"/>
+    <item name="team_image" type="id"/>
+    <item name="team_fav_button" type="id"/>
 </resources>
