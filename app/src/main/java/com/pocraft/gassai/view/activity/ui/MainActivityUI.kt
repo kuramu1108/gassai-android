@@ -15,21 +15,14 @@ class MainActivityUI: AnkoComponent<MainActivity> {
 
     override fun createView(ui: AnkoContext<MainActivity>) = with(ui) {
         relativeLayout {
-            appBarLayout {
+            val appBar = appBarLayout {
+                backgroundResource = R.color.colorPrimary
+                id = R.id.app_bar_layout
                 toolbar = toolbar {
                     id = R.id.toolbar
-                    backgroundColor = R.color.colorPrimary
                     title = "test"
-                    elevation = 4f
-                }.lparams(width = matchParent, height = dip(64))
+                }.lparams(width = matchParent, height = dip(48))
             }.lparams(width = matchParent)
-
-            frameLayout {
-                id = R.id.container
-            }.lparams(width = matchParent) {
-                topMargin = dip(64)
-                bottomMargin = dip(64)
-            }
 
             bottomNavigation = bottomNavigationView {
                 id = R.id.main_bottom_nav
@@ -39,6 +32,15 @@ class MainActivityUI: AnkoComponent<MainActivity> {
             }.lparams(width = matchParent, height = dip(64)) {
                 alignParentBottom()
             }
+
+            frameLayout {
+                id = R.id.container
+            }.lparams(width = matchParent) {
+                below(appBar)
+                above(bottomNavigation)
+            }
+
+
         }
     }
 }

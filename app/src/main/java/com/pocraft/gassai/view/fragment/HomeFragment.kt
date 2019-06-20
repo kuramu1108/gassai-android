@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.pocraft.gassai.di.module.ViewModelFactory
 import com.pocraft.gassai.util.lazyViewModel
 import com.pocraft.gassai.view.fragment.ui.HomeFragmentUI
 import com.pocraft.gassai.viewmodel.TimeTableViewModel
