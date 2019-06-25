@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.pocraft.gassai.R
 import dagger.android.support.DaggerAppCompatActivity
@@ -27,6 +28,9 @@ inline fun <reified T: ViewModel> Fragment.lazyViewModel(crossinline viewModelFa
 // Anko extensions
 inline fun ViewManager.bottomNavigationView(init: BottomNavigationView.() -> Unit = {}) =
         ankoView({BottomNavigationView(it)}, theme = 0, init = init)
+
+inline fun ViewManager.viewPager2(init: ViewPager2.() -> Unit = {}) =
+        ankoView({ViewPager2(it)}, theme = 0, init = init)
 
 fun View.actionBarSize(): Int {
     val tv = TypedValue()

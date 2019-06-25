@@ -10,4 +10,6 @@
     <item name="team_image" type="id"/>
     <item name="team_fav_button" type="id"/>
     <item name="app_bar_layout" type="id"/>
+    <item name="time_table_tab" type="id"/>
+    <item name="time_table_view_pager" type="id"/>
 </resources>
