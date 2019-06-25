@@ -2,6 +2,7 @@ package com.pocraft.gassai.view.activity
 
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.WindowManager
 import androidx.lifecycle.Observer
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.lifecycle.ViewModelProvider

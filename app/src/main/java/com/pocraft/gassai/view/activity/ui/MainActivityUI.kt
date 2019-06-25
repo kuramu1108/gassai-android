@@ -18,33 +18,31 @@ class MainActivityUI: AnkoComponent<MainActivity> {
     lateinit var toolbar: Toolbar
 
     override fun createView(ui: AnkoContext<MainActivity>) = with(ui) {
-        coordinatorLayout {
-            relativeLayout {
-                val appBar = appBarLayout {
-                    //                backgroundResource = R.color.colorPrimary
-                    id = R.id.app_bar_layout
-                    toolbar = toolbar {
-                        id = R.id.toolbar
-                        title = "test"
-                    }.lparams(width = matchParent, height = dip(48))
-                }.lparams(width = matchParent)
+        relativeLayout {
+            val appBar = appBarLayout {
+                //                backgroundResource = R.color.colorPrimary
+                id = R.id.app_bar_layout
+                toolbar = toolbar {
+                    id = R.id.toolbar
+                    title = "test"
+                }.lparams(width = matchParent, height = dip(48))
+            }.lparams(width = matchParent)
 
-                bottomNavigation = bottomNavigationView {
-                    id = R.id.main_bottom_nav
-                    inflateMenu(R.menu.navigation)
-                    backgroundColor = Color.WHITE
-                    setOnNavigationItemSelectedListener(owner)
-                }.lparams(width = matchParent, height = dip(64)) {
-                    alignParentBottom()
-                }
+            bottomNavigation = bottomNavigationView {
+                id = R.id.main_bottom_nav
+                inflateMenu(R.menu.navigation)
+                backgroundColor = Color.WHITE
+                setOnNavigationItemSelectedListener(owner)
+            }.lparams(width = matchParent, height = dip(64)) {
+                alignParentBottom()
+            }
 
-                frameLayout {
-                    id = R.id.container
-                }.lparams(width = matchParent) {
-                    below(appBar)
-                    above(bottomNavigation)
-                }
-            }.lparams(width = matchParent, height = matchParent)
+            frameLayout {
+                id = R.id.container
+            }.lparams(width = matchParent) {
+                below(appBar)
+                above(bottomNavigation)
+            }
         }
     }
 }
