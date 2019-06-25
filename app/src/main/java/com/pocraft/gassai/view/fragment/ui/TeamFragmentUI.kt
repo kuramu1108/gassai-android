@@ -16,19 +16,7 @@ class TeamFragmentUI: AnkoComponent<TeamFragment> {
             id = R.id.teamFragment
             recyclerView = recyclerView {
                 layoutManager = LinearLayoutManager(owner.context)
-                val list = arrayListOf<Team>(
-                    Team(0, "abc", "JAP", 5, "longtexxt"),
-                    Team(1, "s", "JAP", 5, "longtexxt"),
-                    Team(2, "abcsd", "JAP", 5, "longtexxt"),
-                    Team(3, "abcddd", "JAP", 5, "l"),
-                    Team(4, "cc_c", "JAP", 5, "longtexsfdgsdfgsdfgxtasdfa"),
-                    Team(5, "abcddd", "JAP", 5, "l"),
-                    Team(6, "abcddd", "JAP", 5, "l"),
-                    Team(7, "abcddd", "JAP", 5, "l"),
-                    Team(8, "abcddd", "JAP", 5, "l"),
-                    Team(9, "abcddd", "JAP", 5, "l")
-                )
-                adapter = TeamAdapter(list)
+                adapter = TeamAdapter(owner.vm.teamList)
             }.lparams(width = matchParent, height = matchParent)
             lparams(width = matchParent, height = matchParent)
         }
