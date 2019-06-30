@@ -3,7 +3,11 @@ package com.pocraft.gassai.viewmodel
 import androidx.lifecycle.MutableLiveData
 import com.pocraft.gassai.api.ApiService
 import com.pocraft.gassai.model.Team
+import com.pocraft.gassai.model.TimeTable
 import kotlinx.coroutines.*
+import java.time.LocalDate
+import java.time.LocalTime
+import java.time.Month
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
@@ -28,6 +32,13 @@ class TimeTableViewModel @Inject constructor(): BaseViewModel(), CoroutineScope 
         Team(7, "abcddd", "JAP", 5, "l"),
         Team(8, "abcddd", "JAP", 5, "l"),
         Team(9, "abcddd", "JAP", 5, "l")
+    )
+
+    val date1 = LocalDate.of(2019, Month.MARCH, 30)
+    val date2 = LocalDate.of(2019, Month.MARCH, 31)
+    val time1 = LocalTime.of(9, 0)
+    val timeTableList = arrayListOf(
+        TimeTable(0, null, null, date1, time1, "")
     )
 
     fun getName() = "it works"

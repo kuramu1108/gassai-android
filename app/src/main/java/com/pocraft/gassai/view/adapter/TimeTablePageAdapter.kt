@@ -24,7 +24,6 @@ class TimeTablePageAdapter: RecyclerView.Adapter<TimeTablePageAdapter.PagerVH>()
     override fun onBindViewHolder(holder: PagerVH, position: Int) =
         holder.run {
             text.text = "item $position"
-//            itemView.container.setBackgroundResource(test[position])
         }
 
     inner class PagerVH(itemView: View): RecyclerView.ViewHolder(itemView) {
