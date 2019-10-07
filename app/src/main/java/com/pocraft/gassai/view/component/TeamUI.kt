@@ -39,20 +39,14 @@ class TeamUI: AnkoComponent<ViewGroup> {
 
                 sparkButton {
                     id = R.id.team_fav_button_spark
-                }.lparams(height = dip(75)) {
+                }.lparams(height = dip(30), width = dip(30)) {
                     centerVertically()
                     alignParentRight()
+                    marginEnd = dip(8)
                 }
 
-//                imageButton(R.drawable.ic_favorite_border_black_24dp) {
-//                    id = R.id.team_fav_button
-//                    backgroundColor = Color.TRANSPARENT
-//                    visibility = View.GONE
-//                }.lparams(width = dip(30), height = dip(30)) {
-//                    centerVertically()
-//                    alignParentRight()
-//                    marginEnd = dip(8)
-//                }
+                clipChildren = false
+                clipToPadding = false
             }.lparams(width = matchParent, height = matchParent) {
             }
 
