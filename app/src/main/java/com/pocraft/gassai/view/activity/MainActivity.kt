@@ -2,13 +2,13 @@ package com.pocraft.gassai.view.activity
 
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.WindowManager
-import androidx.lifecycle.Observer
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.behavior.HideBottomViewOnScrollBehavior
 import com.pocraft.gassai.R
 import com.pocraft.gassai.util.lazyViewModel
 import com.pocraft.gassai.view.activity.ui.MainActivityUI
@@ -51,5 +51,15 @@ class MainActivity : DaggerAppCompatActivity(), BottomNavigationView.OnNavigatio
 //        navController.addOnDestinationChangedListener { controller, destination, arguments ->
 //
 //        }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        if (ui.bottomNavigation.translationY != 0f) {
+            val layoutParams = ui.bottomNavigation.layoutParams as CoordinatorLayout.LayoutParams
+            val behavior = layoutParams.behavior as HideBottomViewOnScrollBehavior
+
+            behavior.slideUp(ui.bottomNavigation)
+        }
     }
 }
