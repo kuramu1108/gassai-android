@@ -1,9 +1,11 @@
 package com.pocraft.gassai.view.component
 
 import android.graphics.Color
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import com.pocraft.gassai.R
+import com.pocraft.gassai.util.sparkButton
 import org.jetbrains.anko.*
 import org.jetbrains.anko.cardview.v7.cardView
 
@@ -35,14 +37,22 @@ class TeamUI: AnkoComponent<ViewGroup> {
                     rightOf(teamImage)
                 }
 
-                imageButton(R.drawable.ic_favorite_border_black_24dp) {
-                    id = R.id.team_fav_button
-                    backgroundColor = Color.TRANSPARENT
-                }.lparams(width = dip(30), height = dip(30)) {
+                sparkButton {
+                    id = R.id.team_fav_button_spark
+                }.lparams(height = dip(75)) {
                     centerVertically()
                     alignParentRight()
-                    marginEnd = dip(8)
                 }
+
+//                imageButton(R.drawable.ic_favorite_border_black_24dp) {
+//                    id = R.id.team_fav_button
+//                    backgroundColor = Color.TRANSPARENT
+//                    visibility = View.GONE
+//                }.lparams(width = dip(30), height = dip(30)) {
+//                    centerVertically()
+//                    alignParentRight()
+//                    marginEnd = dip(8)
+//                }
             }.lparams(width = matchParent, height = matchParent) {
             }
 

@@ -10,6 +10,8 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.pocraft.gassai.R
+import com.varunest.sparkbutton.SparkButton
+import com.varunest.sparkbutton.SparkButtonBuilder
 import dagger.android.support.DaggerAppCompatActivity
 import org.jetbrains.anko.custom.ankoView
 
@@ -31,6 +33,17 @@ inline fun ViewManager.bottomNavigationView(init: BottomNavigationView.() -> Uni
 
 inline fun ViewManager.viewPager2(init: ViewPager2.() -> Unit = {}) =
         ankoView({ViewPager2(it)}, theme = 0, init = init)
+
+inline fun ViewManager.sparkButton(init: SparkButton.() -> Unit = {}): SparkButton =
+        ankoView({
+            SparkButtonBuilder(it)
+                .setActiveImage(R.drawable.ic_favorite_red_24dp)
+                .setInactiveImage(R.drawable.ic_favorite_border_black_24dp)
+                .setImageSizeDp(30)
+                .setPrimaryColor(it.getColor(R.color.sparkPrimary))
+                .setSecondaryColor(it.getColor(R.color.sparkPrimaryDark))
+                .build()
+        }, theme = 0, init = init)
 
 fun View.actionBarSize(): Int {
     val tv = TypedValue()
