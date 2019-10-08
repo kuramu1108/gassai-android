@@ -2,21 +2,29 @@ package com.pocraft.gassai.view.adapter
 
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.pocraft.gassai.R
 import com.pocraft.gassai.model.TimeTable
+import com.pocraft.gassai.view.component.TimeTableUI
+import org.jetbrains.anko.AnkoContext
 
-class TimeTableAdapter(var list: ArrayList<TimeTable> = arrayListOf()): RecyclerView.Adapter<TimeTableAdapter.ViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+class TimeTableAdapter(var list: ArrayList<TimeTable> = arrayListOf()): RecyclerView.Adapter<TimeTableAdapter.TimeTableViewHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TimeTableViewHolder =
+        TimeTableViewHolder(TimeTableUI().createView(AnkoContext.create(parent.context, parent)))
 
     override fun getItemCount() = list.size
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: TimeTableViewHolder, position: Int) {
         val timeTable = list[position]
+        holder.run {
+            textTeam.text = timeTable.team?.name
+            textTime.text = timeTable.time.toString()
+        }
     }
 
-    inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-
+    inner class TimeTableViewHolder (itemView: View): RecyclerView.ViewHolder(itemView) {
+        var textTime = itemView.findViewById<TextView>(R.id.timetable_time)
+        var textTeam = itemView.findViewById<TextView>(R.id.timetable_team)
     }
 }

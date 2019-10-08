@@ -12,4 +12,7 @@
     <item name="time_table_tab" type="id"/>
     <item name="time_table_view_pager" type="id"/>
     <item name="team_fav_button_spark" type="id" />
+    <item name="timetable_time" type="id" />
+    <item name="timetable_team" type="id" />
+    <item name="timetable_recyclerview" type="id" />
 </resources>

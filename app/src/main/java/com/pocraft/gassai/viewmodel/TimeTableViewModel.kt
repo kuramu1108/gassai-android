@@ -37,8 +37,20 @@ class TimeTableViewModel @Inject constructor(): BaseViewModel(), CoroutineScope 
     val date1 = LocalDate.of(2019, Month.MARCH, 30)
     val date2 = LocalDate.of(2019, Month.MARCH, 31)
     val time1 = LocalTime.of(9, 0)
-    val timeTableList = arrayListOf(
-        TimeTable(0, null, null, date1, time1, "")
+    val timeTableList1 = arrayListOf(
+        TimeTable(0, teamList[0], null, date1, time1, ""),
+        TimeTable(1, teamList[1], null, date1, time1, ""),
+        TimeTable(2, teamList[2], null, date1, time1, ""),
+        TimeTable(3, teamList[3], null, date1, time1, ""),
+        TimeTable(4, teamList[4], null, date1, time1, ""),
+        TimeTable(5, teamList[5], null, date1, time1, "")
+    )
+
+    val timeTableList2 = arrayListOf(
+        TimeTable(0, teamList[6], null, date1, time1, ""),
+        TimeTable(1, teamList[7], null, date1, time1, ""),
+        TimeTable(2, teamList[8], null, date1, time1, ""),
+        TimeTable(3, teamList[9], null, date1, time1, "")
     )
 
     fun getName() = "it works"
