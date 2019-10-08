@@ -17,13 +17,15 @@ class TeamFragment: Fragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     val vm by lazyViewModel<TimeTableViewModel> { viewModelFactory }
+    lateinit var ui: TeamFragmentUI
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidSupportInjection.inject(this)
         super.onCreate(savedInstanceState)
     }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = TeamFragmentUI().createView(AnkoContext.create(inflater.context, this, false))
+        ui = TeamFragmentUI()
+        val view = ui.createView(AnkoContext.create(inflater.context, this, false))
         return view
     }
 }

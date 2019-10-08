@@ -19,19 +19,19 @@ class MainActivityUI: AnkoComponent<MainActivity> {
     override fun createView(ui: AnkoContext<MainActivity>) = with(ui) {
         coordinatorLayout {
             relativeLayout {
-                val appBar = themedAppBarLayout(R.style.AppTheme_ActionBar) {
-                    id = R.id.app_bar_layout
-                    toolbar = toolbar {
-                        id = R.id.toolbar
-                        title = ""
-                    }.lparams(width = matchParent, height = dip(48))
-                }.lparams(width = matchParent)
-
+//                val appBar = themedAppBarLayout(R.style.AppTheme_ActionBar) {
+//                    id = R.id.app_bar_layout
+//                    toolbar = toolbar {
+//                        id = R.id.toolbar
+//                        title = ""
+//                    }.lparams(width = matchParent, height = dip(48))
+//                }.lparams(width = matchParent)
+//
 
                 frameLayout {
                     id = R.id.container
                 }.lparams(width = matchParent) {
-                    below(appBar)
+                    alignParentTop()
                     alignParentBottom()
                 }
             }.lparams(width = matchParent, height = matchParent)

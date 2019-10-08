@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.pocraft.gassai.R
+import com.pocraft.gassai.view.layout.NestedCoordinatorLayout
 import com.varunest.sparkbutton.SparkButton
 import com.varunest.sparkbutton.SparkButtonBuilder
 import dagger.android.support.DaggerAppCompatActivity
@@ -28,6 +29,9 @@ inline fun <reified T: ViewModel> Fragment.lazyViewModel(crossinline viewModelFa
 }
 
 // Anko extensions
+inline fun ViewManager.nestedCoordinatorLayout(init: NestedCoordinatorLayout.() -> Unit = {}) =
+        ankoView({NestedCoordinatorLayout(it)}, theme = R.attr.coordinatorLayoutStyle, init = init)
+
 inline fun ViewManager.bottomNavigationView(init: BottomNavigationView.() -> Unit = {}) =
         ankoView({BottomNavigationView(it)}, theme = 0, init = init)
 
