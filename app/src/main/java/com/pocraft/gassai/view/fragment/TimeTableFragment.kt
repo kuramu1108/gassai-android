@@ -37,7 +37,7 @@ class TimeTableFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        ui.viewPager.adapter = TimeTablePageAdapter(arrayListOf(vm.timeTableList1, vm.timeTableList2))
+        ui.viewPager.adapter = TimeTablePageAdapter(vm.getTimeTables(0))
 
         ui.tab.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener {
             override fun onTabReselected(tab: TabLayout.Tab?) {
@@ -52,7 +52,7 @@ class TimeTableFragment: Fragment() {
         })
 
         val mediator = TabLayoutMediator(ui.tab, ui.viewPager) { tab: TabLayout.Tab, position: Int ->
-            tab.text = "position $position"
+            tab.text = vm.getVenueList()[position]
         }
         mediator.attach()
     }

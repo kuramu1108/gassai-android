@@ -51,7 +51,7 @@ class TeamFragmentUI: AnkoComponent<TeamFragment> {
                 }
             }.lparams(width = matchParent, height = dip(300)) {
             }
-
+            backgroundColorResource = R.color.colorBackGround
             id = R.id.teamFragment
             recyclerView = recyclerView {
                 layoutManager = LinearLayoutManager(owner.context)

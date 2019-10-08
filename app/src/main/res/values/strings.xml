@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Gassai</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_timetable">TimeTable</string>
+    <string name="title_team">Teams</string>
+    <string name="title_reminders">Reminders</string>
 </resources>

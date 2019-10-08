@@ -7,7 +7,6 @@ import com.pocraft.gassai.R
 import com.pocraft.gassai.util.viewPager2
 import com.pocraft.gassai.view.fragment.TimeTableFragment
 import org.jetbrains.anko.*
-import org.jetbrains.anko.design.floatingActionButton
 import org.jetbrains.anko.design.tabLayout
 
 class TimeTableFragmentUI: AnkoComponent<TimeTableFragment> {
@@ -17,9 +16,12 @@ class TimeTableFragmentUI: AnkoComponent<TimeTableFragment> {
 
     override fun createView(ui: AnkoContext<TimeTableFragment>) = with(ui) {
         relativeLayout {
+            backgroundColorResource = R.color.colorBackGround
             id = R.id.timeTableFragment
             tab = tabLayout {
                 id = R.id.time_table_tab
+                backgroundColorResource = R.color.colorPrimary
+                tabMode = TabLayout.MODE_SCROLLABLE
             }.lparams(width = matchParent, height = wrapContent)
 
             viewPager = viewPager2 {

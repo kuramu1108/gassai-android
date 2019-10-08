@@ -22,7 +22,7 @@ class TimeTableUI: AnkoComponent<ViewGroup> {
 
                 val divider = view {
                     id = R.id.divider
-                    setBackgroundColor(Color.MAGENTA)
+                    setBackgroundColor(resources.getColor(R.color.colorPrimary, null))
                 }.lparams(width = dip(3), height = matchParent) {
                     rightOf(time)
                     verticalMargin = dip(8)
@@ -45,7 +45,7 @@ class TimeTableUI: AnkoComponent<ViewGroup> {
                 }
                 clipChildren = false
                 clipToPadding = false
-            }.lparams(width = matchParent, height = dip(75)) {
+            }.lparams(width = matchParent, height = dip(64)) {
             }
 
             radius = dip(3).toFloat()

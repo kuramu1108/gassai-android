@@ -57,6 +57,11 @@ class TimeTableViewModel @Inject constructor(): BaseViewModel(), CoroutineScope 
         TimeTable(3, teamList[9], null, date1, time1, "")
     )
 
+    fun getDates() = arrayListOf(date1, date2, date2, date2, date2)
+
+    fun getVenueList() = arrayOf("熊本城", "城彩苑", "辛島",
+        "上通北", "上通南", "下通二", "下通四", "銀座通", "新市街")
+
     fun getName() = "it works"
 
     val repoSize = MutableLiveData(0)
@@ -68,5 +73,9 @@ class TimeTableViewModel @Inject constructor(): BaseViewModel(), CoroutineScope 
     override fun onCleared() {
         super.onCleared()
         job.cancel()
+    }
+
+    fun getTimeTables(date: Int): ArrayList<ArrayList<TimeTable>> {
+        return arrayListOf(timeTableList1, timeTableList1, timeTableList1, timeTableList1, timeTableList1, timeTableList2, timeTableList2, timeTableList2, timeTableList2)
     }
 }
