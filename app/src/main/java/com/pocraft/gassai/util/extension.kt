@@ -34,7 +34,7 @@ inline fun ViewManager.bottomNavigationView(init: BottomNavigationView.() -> Uni
 inline fun ViewManager.viewPager2(init: ViewPager2.() -> Unit = {}) =
         ankoView({ViewPager2(it)}, theme = 0, init = init)
 
-inline fun ViewManager.sparkButton(init: SparkButton.() -> Unit = {}): SparkButton =
+inline fun ViewManager.favSparkButton(init: SparkButton.() -> Unit = {}): SparkButton =
         ankoView({
             SparkButtonBuilder(it)
                 .setActiveImage(R.drawable.ic_favorite_red_24dp)
@@ -44,6 +44,17 @@ inline fun ViewManager.sparkButton(init: SparkButton.() -> Unit = {}): SparkButt
                 .setSecondaryColor(it.getColor(R.color.sparkPrimaryDark))
                 .build()
         }, theme = 0, init = init)
+
+inline fun ViewManager.reminderSparkButton(init: SparkButton.() -> Unit = {}): SparkButton =
+    ankoView({
+        SparkButtonBuilder(it)
+            .setActiveImage(R.drawable.ic_notifications_active_black_24dp)
+            .setInactiveImage(R.drawable.ic_notifications_none_black_24dp)
+            .setImageSizeDp(30)
+            .setPrimaryColor(it.getColor(R.color.reminderSparkPrimary))
+            .setSecondaryColor(it.getColor(R.color.reminderSparkPrimaryDark))
+            .build()
+    }, theme = 0, init = init)
 
 fun View.actionBarSize(): Int {
     val tv = TypedValue()

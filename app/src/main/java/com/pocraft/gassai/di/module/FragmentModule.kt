@@ -2,6 +2,7 @@ package com.pocraft.gassai.di.module
 
 import com.pocraft.gassai.view.fragment.HomeFragment
 import com.pocraft.gassai.view.fragment.TeamFragment
+import com.pocraft.gassai.view.fragment.TimeTableFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -12,4 +13,7 @@ abstract class FragmentModule {
 
     @ContributesAndroidInjector
     abstract fun bindTeamFragment(): TeamFragment
+
+    @ContributesAndroidInjector
+    abstract fun bindTimeTableFragment(): TimeTableFragment
 }
