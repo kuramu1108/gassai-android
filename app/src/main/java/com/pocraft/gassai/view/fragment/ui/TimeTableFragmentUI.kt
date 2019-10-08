@@ -7,6 +7,7 @@ import com.pocraft.gassai.R
 import com.pocraft.gassai.util.viewPager2
 import com.pocraft.gassai.view.fragment.TimeTableFragment
 import org.jetbrains.anko.*
+import org.jetbrains.anko.design.floatingActionButton
 import org.jetbrains.anko.design.tabLayout
 
 class TimeTableFragmentUI: AnkoComponent<TimeTableFragment> {

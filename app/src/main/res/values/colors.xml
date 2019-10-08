@@ -4,6 +4,10 @@
     <color name="colorPrimaryDark">#A6860A39</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorActionBarPrimary">#FFFFFF</color>
+
     <color name="sparkPrimary">#BE2D2D</color>
     <color name="sparkPrimaryDark">#52001D</color>
+
+    <color name="reminderSparkPrimary">#91C3FF</color>
+    <color name="reminderSparkPrimaryDark">#05578F</color>
 </resources>

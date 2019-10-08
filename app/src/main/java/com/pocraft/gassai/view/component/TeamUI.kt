@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import com.pocraft.gassai.R
-import com.pocraft.gassai.util.sparkButton
+import com.pocraft.gassai.util.favSparkButton
 import org.jetbrains.anko.*
 import org.jetbrains.anko.cardview.v7.cardView
 
@@ -37,7 +37,7 @@ class TeamUI: AnkoComponent<ViewGroup> {
                     rightOf(teamImage)
                 }
 
-                sparkButton {
+                favSparkButton {
                     id = R.id.team_fav_button_spark
                 }.lparams(height = dip(30), width = dip(30)) {
                     centerVertically()
