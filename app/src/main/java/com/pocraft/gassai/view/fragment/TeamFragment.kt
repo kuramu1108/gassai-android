@@ -36,10 +36,11 @@ class TeamFragment: Fragment() {
         val view = ui.createView(AnkoContext.create(inflater.context, this, false))
 
         adapter = ui.recyclerView.adapter as TeamAdapter
-        vm.teams().observe(this, Observer<List<Team>> { t ->
-            adapter.setData(t)
-            Log.v("ttt", "tets")
-        })
+        adapter.setData(vm.teams())
+//        vm.teams().observe(this, Observer<List<Team>> { t ->
+//            adapter.setData(t)
+//            Log.v("ttt", "tets")
+//        })
         return view
     }
 }

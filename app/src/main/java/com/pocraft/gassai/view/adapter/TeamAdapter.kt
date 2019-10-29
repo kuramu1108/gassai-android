@@ -1,6 +1,5 @@
 package com.pocraft.gassai.view.adapter
 
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -28,15 +27,13 @@ class TeamAdapter(var list: ArrayList<Team> = arrayListOf(), val vm: TimeTableVi
         holder.favButton.setEventListener(object: SparkEventListener {
             override fun onEvent(button: ImageView?, buttonState: Boolean) {
                 team.isFavorite = buttonState
-                if (!buttonState) vm.updateTeam(team)
-            }
-
-            override fun onEventAnimationEnd(button: ImageView?, buttonState: Boolean) {
                 vm.updateTeam(team)
             }
 
-            override fun onEventAnimationStart(button: ImageView?, buttonState: Boolean) {
+            override fun onEventAnimationEnd(button: ImageView?, buttonState: Boolean) {
+            }
 
+            override fun onEventAnimationStart(button: ImageView?, buttonState: Boolean) {
             }
         })
     }

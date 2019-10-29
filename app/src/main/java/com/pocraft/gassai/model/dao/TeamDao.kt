@@ -8,8 +8,9 @@ import com.pocraft.gassai.model.Team
 
 @Dao
 interface TeamDao {
-    @Query("SELECT * FROM teams ORDER BY id DESC")
-    fun getAll(): LiveData<List<Team>>
+    @Query("SELECT * FROM teams ORDER BY id ASC")
+    suspend fun getAll(): List<Team>
+//    fun getAll(): LiveData<List<Team>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(team: Team)

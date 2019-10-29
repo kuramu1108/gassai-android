@@ -64,8 +64,10 @@ class TimeTableViewModel @Inject constructor(): BaseViewModel(), CoroutineScope 
 
     fun getDates() = arrayListOf(date1, date2, date2, date2, date2)
 
-    fun getVenueList() = arrayOf("熊本城", "城彩苑", "辛島",
-        "上通北", "上通南", "下通二", "下通四", "銀座通", "新市街")
+    fun getVenueList() = arrayOf(
+        "熊本城", "城彩苑", "辛島",
+        "上通北", "上通南", "下通二", "下通四", "銀座通", "新市街"
+    )
 
     fun getName() = "it works"
 
@@ -81,16 +83,30 @@ class TimeTableViewModel @Inject constructor(): BaseViewModel(), CoroutineScope 
     }
 
     fun getTimeTables(date: Int): ArrayList<ArrayList<TimeTable>> {
-        return arrayListOf(timeTableList1, timeTableList1, timeTableList1, timeTableList1, timeTableList1, timeTableList2, timeTableList2, timeTableList2, timeTableList2)
+        return arrayListOf(
+            timeTableList1,
+            timeTableList1,
+            timeTableList1,
+            timeTableList1,
+            timeTableList1,
+            timeTableList2,
+            timeTableList2,
+            timeTableList2,
+            timeTableList2
+        )
     }
 
     fun populateTeams() = launch {
         teamRepository.insertAll(teamList)
     }
 
-    fun teams() = teamRepository.allTeams
+    fun teams() = runBlocking {
+        teamRepository.getAll()
+    }
 
-    fun updateTeam(team: Team) = launch (Dispatchers.IO) {
-        teamRepository.update(team)
+    // https://medium.com/androiddevelopers/coroutines-on-android-part-i-getting-the-background-3e0e54d20bb
+
+    fun updateTeam(team: Team) = launch {
+            teamRepository.update(team)
     }
 }
