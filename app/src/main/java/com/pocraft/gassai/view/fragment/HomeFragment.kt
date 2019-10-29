@@ -40,7 +40,8 @@ class HomeFragment: Fragment() {
 
         ui.fetchButton.setOnClickListener {
             ui.fetchButton.text = "populate"
-            vm.populateTeams()
+//            vm.populateTeams()
+            vm.getRepo()
         }
     }
 }
