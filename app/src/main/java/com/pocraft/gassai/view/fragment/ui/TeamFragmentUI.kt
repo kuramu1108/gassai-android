@@ -1,6 +1,5 @@
 package com.pocraft.gassai.view.fragment.ui
 
-import android.graphics.drawable.Drawable
 import android.widget.ImageView
 import android.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -55,7 +54,7 @@ class TeamFragmentUI: AnkoComponent<TeamFragment> {
             id = R.id.teamFragment
             recyclerView = recyclerView {
                 layoutManager = LinearLayoutManager(owner.context)
-                adapter = TeamAdapter(owner.vm.teamList)
+                adapter = TeamAdapter(vm = owner.vm)
             }.lparams(width = matchParent, height = matchParent) {
                 behavior = AppBarLayout.ScrollingViewBehavior()
             }

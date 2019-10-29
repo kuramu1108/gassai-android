@@ -1,9 +1,11 @@
 package com.pocraft.gassai.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.pocraft.gassai.api.ApiService
 import com.pocraft.gassai.model.Team
 import com.pocraft.gassai.model.TimeTable
+import com.pocraft.gassai.model.repository.TeamRepository
 import kotlinx.coroutines.*
 import java.time.LocalDate
 import java.time.LocalTime
@@ -19,19 +21,22 @@ class TimeTableViewModel @Inject constructor(): BaseViewModel(), CoroutineScope 
     @Inject
     lateinit var apiService: ApiService
 
+    @Inject
+    lateinit var teamRepository: TeamRepository
+
     private val job = Job() + coroutineContext
 
     val teamList = arrayListOf(
-        Team(0, "abc", "JAP", 5, "longtexxt"),
-        Team(1, "s", "JAP", 5, "longtexxt"),
-        Team(2, "abcsd", "JAP", 5, "longtexxt"),
-        Team(3, "abcddd", "JAP", 5, "l"),
-        Team(4, "cc_c", "JAP", 5, "longtexsfdgsdfgsdfgxtasdfa"),
-        Team(5, "abcddd", "JAP", 5, "l"),
-        Team(6, "abcddd", "JAP", 5, "l"),
-        Team(7, "abcddd", "JAP", 5, "l"),
-        Team(8, "abcddd", "JAP", 5, "l"),
-        Team(9, "abcddd", "JAP", 5, "l")
+        Team(0, "abc", "JAP", 5, "longtexxt", false),
+        Team(1, "s", "JAP", 5, "longtexxt", false),
+        Team(2, "abcsd", "JAP", 5, "longtexxt", false),
+        Team(3, "abcddd", "JAP", 5, "l", false),
+        Team(4, "cc_c", "JAP", 5, "longtexsfdgsdfgsdfgxtasdfa", false),
+        Team(5, "abcddd", "JAP", 5, "l", false),
+        Team(6, "abcddd", "JAP", 5, "l", false),
+        Team(7, "abcddd", "JAP", 5, "l", false),
+        Team(8, "abcddd", "JAP", 5, "l", false),
+        Team(9, "abcddd", "JAP", 5, "l", false)
     )
 
     val date1 = LocalDate.of(2019, Month.MARCH, 30)
@@ -59,8 +64,10 @@ class TimeTableViewModel @Inject constructor(): BaseViewModel(), CoroutineScope 
 
     fun getDates() = arrayListOf(date1, date2, date2, date2, date2)
 
-    fun getVenueList() = arrayOf("熊本城", "城彩苑", "辛島",
-        "上通北", "上通南", "下通二", "下通四", "銀座通", "新市街")
+    fun getVenueList() = arrayOf(
+        "熊本城", "城彩苑", "辛島",
+        "上通北", "上通南", "下通二", "下通四", "銀座通", "新市街"
+    )
 
     fun getName() = "it works"
 
@@ -76,6 +83,30 @@ class TimeTableViewModel @Inject constructor(): BaseViewModel(), CoroutineScope 
     }
 
     fun getTimeTables(date: Int): ArrayList<ArrayList<TimeTable>> {
-        return arrayListOf(timeTableList1, timeTableList1, timeTableList1, timeTableList1, timeTableList1, timeTableList2, timeTableList2, timeTableList2, timeTableList2)
+        return arrayListOf(
+            timeTableList1,
+            timeTableList1,
+            timeTableList1,
+            timeTableList1,
+            timeTableList1,
+            timeTableList2,
+            timeTableList2,
+            timeTableList2,
+            timeTableList2
+        )
+    }
+
+    fun populateTeams() = launch {
+        teamRepository.insertAll(teamList)
+    }
+
+    fun teams() = runBlocking {
+        teamRepository.getAll()
+    }
+
+    // https://medium.com/androiddevelopers/coroutines-on-android-part-i-getting-the-background-3e0e54d20bb
+
+    fun updateTeam(team: Team) = launch {
+            teamRepository.update(team)
     }
 }

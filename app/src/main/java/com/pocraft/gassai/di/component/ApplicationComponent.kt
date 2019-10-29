@@ -10,7 +10,6 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(modules = [AndroidSupportInjectionModule::class,
-//    ApplicationModule::class,
     ActivityModule::class,
     FragmentModule::class,
     DatabaseModule::class,
@@ -19,14 +18,17 @@ import javax.inject.Singleton
 interface ApplicationComponent {
     fun inject(application: TheApplication)
 
-    @Component.Builder
-    interface Builder {
-        fun build(): ApplicationComponent
-
-        @BindsInstance
-        fun applicationBind(application: Application): Builder
-
-//        @BindsInstance
-        fun netWorkModuleBind(networkModule: NetworkModule): Builder
+    @Component.Factory
+    interface Factory {
+        fun create(@BindsInstance application: Application, networkModule: NetworkModule): ApplicationComponent
     }
+//    @Component.Builder
+//    interface Builder {
+//        fun build(): ApplicationComponent
+//
+//        @BindsInstance
+//        fun applicationBind(application: Application): Builder
+//
+//        fun netWorkModuleBind(networkModule: NetworkModule): Builder
+//    }
 }

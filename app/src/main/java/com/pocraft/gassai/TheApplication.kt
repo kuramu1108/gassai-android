@@ -1,19 +1,17 @@
 package com.pocraft.gassai
 
-import android.app.Activity
 import android.app.Application
 import com.pocraft.gassai.di.component.ApplicationComponent
 import com.pocraft.gassai.di.component.DaggerApplicationComponent
 import com.pocraft.gassai.di.module.NetworkModule
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasActivityInjector
-import io.realm.Realm
+import dagger.android.HasAndroidInjector
 import javax.inject.Inject
 
-class TheApplication: Application(), HasActivityInjector {
+class TheApplication: Application(), HasAndroidInjector {
     @Inject
-    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
+    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Any>
 
     lateinit var appComponent: ApplicationComponent
 
@@ -24,19 +22,16 @@ class TheApplication: Application(), HasActivityInjector {
     }
 
     private fun setUp() {
-        initRealmConfiguration()
+        appComponent = DaggerApplicationComponent.factory()
+            .create(application = this,
+                networkModule = NetworkModule("https://api.github.com"))
 
-        appComponent = DaggerApplicationComponent.builder()
-            .applicationBind(this)
-            .netWorkModuleBind(NetworkModule("https://api.github.com"))
-            .build()
+//        appComponent = DaggerApplicationComponent.builder()
+//            .applicationBind(this)
+//            .netWorkModuleBind(NetworkModule("https://api.github.com"))
+//            .build()
         appComponent.inject(this)
     }
 
-    private fun initRealmConfiguration() {
-        Realm.init(this)
-
-    }
-
-    override fun activityInjector(): AndroidInjector<Activity> = dispatchingAndroidInjector
+    override fun androidInjector(): AndroidInjector<Any> = dispatchingAndroidInjector
 }

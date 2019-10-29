@@ -39,7 +39,8 @@ class HomeFragment: Fragment() {
         })
 
         ui.fetchButton.setOnClickListener {
-            ui.fetchButton.text = vm.getName()
+            ui.fetchButton.text = "populate"
+//            vm.populateTeams()
             vm.getRepo()
         }
     }
