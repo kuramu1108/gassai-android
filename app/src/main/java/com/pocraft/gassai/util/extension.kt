@@ -3,6 +3,7 @@ package com.pocraft.gassai.util
 import android.util.TypedValue
 import android.view.View
 import android.view.ViewManager
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -29,6 +30,10 @@ inline fun <reified T: ViewModel> Fragment.lazyViewModel(crossinline viewModelFa
 }
 
 // Anko extensions
+inline fun ViewManager.toolbarv7(init: Toolbar.() -> Unit): Toolbar {
+    return ankoView({Toolbar(it)}, theme = 0, init = init)
+}
+
 inline fun ViewManager.nestedCoordinatorLayout(init: NestedCoordinatorLayout.() -> Unit = {}) =
         ankoView({NestedCoordinatorLayout(it)}, theme = R.attr.coordinatorLayoutStyle, init = init)
 

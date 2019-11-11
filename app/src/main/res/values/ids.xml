@@ -19,4 +19,5 @@
     <item name="divider" type="id" />
     <item name="team_top_image" type="id" />
     <item name="reminder_test" type="id" />
+    <item name="team_collapsing_tool_bar" type="id" />
 </resources>
