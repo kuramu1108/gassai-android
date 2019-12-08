@@ -74,7 +74,7 @@ class TimeTableViewModel @Inject constructor(): BaseViewModel(), CoroutineScope 
     val repoSize = MutableLiveData(0)
 
     fun getRepo() = runBlocking {
-        repoSize.value = apiService.getRepository("kuramu1108").await().size
+        repoSize.value = apiService.getAllTeams().await().body()!!.size
     }
 
     override fun onCleared() {
@@ -100,9 +100,7 @@ class TimeTableViewModel @Inject constructor(): BaseViewModel(), CoroutineScope 
         teamRepository.insertAll(teamList)
     }
 
-    fun teams() = runBlocking {
-        teamRepository.getAll()
-    }
+    fun teams() = teamRepository.getAllTeams()
 
     // https://medium.com/androiddevelopers/coroutines-on-android-part-i-getting-the-background-3e0e54d20bb
 

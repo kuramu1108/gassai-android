@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
+import com.pocraft.gassai.api.Result
 import com.pocraft.gassai.model.Team
 import com.pocraft.gassai.util.lazyViewModel
 import com.pocraft.gassai.view.adapter.TeamAdapter
@@ -36,11 +38,23 @@ class TeamFragment: Fragment() {
         val view = ui.createView(AnkoContext.create(inflater.context, this, false))
 
         adapter = ui.recyclerView.adapter as TeamAdapter
-        adapter.setData(vm.teams())
-//        vm.teams().observe(this, Observer<List<Team>> { t ->
-//            adapter.setData(t)
-//            Log.v("ttt", "tets")
-//        })
+//        adapter.setData(vm.teams())
+        ui.progressBar.visibility = View.VISIBLE
+        vm.teams().observe(viewLifecycleOwner, Observer<Result<List<Team>>> { t ->
+            when (t.status) {
+                Result.Status.SUCCESS -> {
+
+                    adapter.setData(t.data!!)
+                    ui.progressBar.visibility = View.GONE
+                }
+                Result.Status.ERROR -> {
+                    ui.progressBar.visibility = View.GONE
+                    Log.v("ttt", t.message)
+                }
+                Result.Status.LOADING -> ui.progressBar.visibility = View.VISIBLE
+            }
+            Log.v("ttt", "tets")
+        })
         return view
     }
 }

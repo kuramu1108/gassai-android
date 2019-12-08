@@ -1,6 +1,11 @@
 package com.pocraft.gassai.view.fragment.ui
 
+import android.graphics.Color
+import android.view.Gravity
+import android.view.View
+import android.widget.FrameLayout
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,6 +24,7 @@ import org.jetbrains.anko.recyclerview.v7.recyclerView
 class TeamFragmentUI: AnkoComponent<TeamFragment> {
     lateinit var recyclerView: RecyclerView
     lateinit var collapsingToolbar: CollapsingToolbarLayout
+    lateinit var progressBar: FrameLayout
 //    lateinit var toolbar: Toolbar
     override fun createView(ui: AnkoContext<TeamFragment>) = with(ui) {
         nestedCoordinatorLayout {
@@ -53,8 +59,8 @@ class TeamFragmentUI: AnkoComponent<TeamFragment> {
                     scrollFlags = AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL or
                             AppBarLayout.LayoutParams.SCROLL_FLAG_EXIT_UNTIL_COLLAPSED
                 }
-            }.lparams(width = matchParent, height = dip(300)) {
-            }
+            }.lparams(width = matchParent, height = dip(300))
+
             backgroundColorResource = R.color.colorBackGround
             id = R.id.teamFragment
             recyclerView = recyclerView {
@@ -63,6 +69,23 @@ class TeamFragmentUI: AnkoComponent<TeamFragment> {
             }.lparams(width = matchParent, height = matchParent) {
                 behavior = AppBarLayout.ScrollingViewBehavior()
             }
+
+            progressBar = frameLayout {
+                id = R.id.team_fragment_overlay
+                themedProgressBar(R.style.Widget_AppCompat_ProgressBar) {
+                    id = R.id.team_fragment_progressbar
+                }.lparams(width = dip(128), height = dip(128)) {
+                    gravity = Gravity.CENTER
+                }
+                alpha = 0.6f
+                isClickable = true
+                isFocusable = true
+                visibility = View.GONE
+                backgroundColor = Color.BLACK
+            }.lparams(width = matchParent, height = matchParent) {
+
+            }
+
             lparams(width = matchParent, height = matchParent) {
             }
         }

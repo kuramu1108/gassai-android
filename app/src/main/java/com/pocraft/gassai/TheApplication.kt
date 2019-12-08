@@ -24,7 +24,7 @@ class TheApplication: Application(), HasAndroidInjector {
     private fun setUp() {
         appComponent = DaggerApplicationComponent.factory()
             .create(application = this,
-                networkModule = NetworkModule("https://api.github.com"))
+                networkModule = NetworkModule("https://po-quick-server.herokuapp.com"))
 
 //        appComponent = DaggerApplicationComponent.builder()
 //            .applicationBind(this)

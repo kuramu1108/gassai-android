@@ -1,7 +1,11 @@
 package com.pocraft.gassai.di.module
 
 import android.app.Application
+import android.util.Log
 import androidx.room.Room
+import androidx.room.RoomDatabase
+import androidx.sqlite.db.SupportSQLiteDatabase
+import com.pocraft.gassai.api.ApiService
 import com.pocraft.gassai.model.dao.TeamDao
 import com.pocraft.gassai.model.db.AppDatabase
 import com.pocraft.gassai.model.repository.TeamRepository
@@ -17,14 +21,6 @@ class DatabaseModule {
         Room.databaseBuilder(
             app,
             AppDatabase::class.java, "gassai.db")
-//            .addCallback(object : RoomDatabase.Callback() {
-//                override fun onOpen(db: SupportSQLiteDatabase) {
-//                    super.onOpen(db)
-//                    if (db.version == 1) {
-//
-//                    }
-//                }
-//            })
 //            .addMigrations(
 //                MIGRATION_1_2,
 //                MIGRATION_2_3)
@@ -39,6 +35,6 @@ class DatabaseModule {
 
     @Singleton
     @Provides
-    fun provideTeamRepository(dao: TeamDao): TeamRepository =
-        TeamRepository(dao)
+    fun provideTeamRepository(dao: TeamDao, api: ApiService): TeamRepository =
+        TeamRepository(dao, api)
 }
