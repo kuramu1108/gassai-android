@@ -4,6 +4,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.pocraft.gassai.R
 import com.pocraft.gassai.model.Team
@@ -13,14 +15,12 @@ import com.varunest.sparkbutton.SparkButton
 import com.varunest.sparkbutton.SparkEventListener
 import org.jetbrains.anko.AnkoContext
 
-class TeamAdapter(var list: ArrayList<Team> = arrayListOf(), val vm: TimeTableViewModel): RecyclerView.Adapter<TeamAdapter.TeamHolder>() {
+class TeamAdapter(val vm: TimeTableViewModel): ListAdapter<Team, TeamAdapter.TeamHolder>(TeamDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TeamHolder =
         TeamHolder(TeamUI().createView(AnkoContext.create(parent.context, parent)))
 
-    override fun getItemCount() = list.size
-
     override fun onBindViewHolder(holder: TeamHolder, position: Int) {
-        val team = list[position]
+        val team = getItem(position)
         holder.teamName.text = team.name
         holder.teamDescription.text = team.description
         holder.favButton.isChecked = team.isFavorite
@@ -38,14 +38,18 @@ class TeamAdapter(var list: ArrayList<Team> = arrayListOf(), val vm: TimeTableVi
         })
     }
 
-    fun setData(data: List<Team>) {
-        list = data as ArrayList<Team>
-        notifyDataSetChanged()
-    }
-
     inner class TeamHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         var teamName: TextView = itemView.findViewById(R.id.team_ui_name)
         var teamDescription: TextView = itemView.findViewById(R.id.team_ui_description)
         var favButton: SparkButton = itemView.findViewById(R.id.team_fav_button_spark)
     }
+}
+
+class TeamDiffCallback: DiffUtil.ItemCallback<Team>() {
+    override fun areItemsTheSame(oldItem: Team, newItem: Team) = oldItem.id == newItem.id
+
+    override fun areContentsTheSame(oldItem: Team, newItem: Team): Boolean {
+        return oldItem.id == newItem.id
+    }
+
 }

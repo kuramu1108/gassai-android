@@ -44,7 +44,7 @@ class TeamFragment: Fragment() {
             when (t.status) {
                 Result.Status.SUCCESS -> {
 
-                    adapter.setData(t.data!!)
+                    adapter.submitList(t.data!!)
                     ui.progressBar.visibility = View.GONE
                 }
                 Result.Status.ERROR -> {

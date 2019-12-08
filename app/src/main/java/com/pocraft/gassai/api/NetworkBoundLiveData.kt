@@ -13,10 +13,11 @@ fun <T, A> networkBoundLiveData(databaseQuery: () -> LiveData<T>,
                                 saveCallResult: suspend (A) -> Unit):LiveData<Result<T>> =
     liveData(Dispatchers.IO) {
         emit(Result.loading<T>())
+        val source = databaseQuery.invoke().map { Result.success(it) }
+        emitSource(source)
         if (shouldFetch.invoke()) {
-
-            val response = networkCall.invoke().await()
             emit(Result.loading<T>())
+            val response = networkCall.invoke().await()
             if (response.isSuccessful) {
                 saveCallResult(response.body()!!)
                 val source = databaseQuery.invoke().map { Result.success(it) }
@@ -26,8 +27,5 @@ fun <T, A> networkBoundLiveData(databaseQuery: () -> LiveData<T>,
                 val source = databaseQuery.invoke().map { Result.success(it) }
                 emitSource(source)
             }
-        } else {
-            val source = databaseQuery.invoke().map { Result.success(it) }
-            emitSource(source)
         }
     }
