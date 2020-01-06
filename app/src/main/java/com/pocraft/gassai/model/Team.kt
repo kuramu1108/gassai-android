@@ -13,4 +13,6 @@ data class Team (
     var description: String,
 //    @ColumnInfo
     var isFavorite: Boolean = false
-)
+) {
+    fun isIdentical(t: Team) = id == t.id && name == t.name && participation == t.participation
+}

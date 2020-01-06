@@ -49,7 +49,7 @@ class MainActivity : DaggerAppCompatActivity(), BottomNavigationView.OnNavigatio
         val navController = navHost.findNavController()
         ui.bottomNavigation.setupWithNavController(navController)
         ui.bottomNavigation.setOnNavigationItemReselectedListener {
-            
+
         }
 //        navController.addOnDestinationChangedListener { controller, destination, arguments ->
 //
