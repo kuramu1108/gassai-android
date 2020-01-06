@@ -1,5 +1,6 @@
 package com.pocraft.gassai.view.fragment.ui
 
+import android.graphics.Color
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
@@ -21,6 +22,7 @@ class TimeTableFragmentUI: AnkoComponent<TimeTableFragment> {
             tab = tabLayout {
                 id = R.id.time_table_tab
                 backgroundColorResource = R.color.colorPrimary
+                setSelectedTabIndicatorColor(Color.BLACK)
                 tabMode = TabLayout.MODE_SCROLLABLE
             }.lparams(width = matchParent, height = wrapContent)
 
