@@ -3,8 +3,8 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph"
             app:startDestination="@id/homeFragment">
-    <fragment android:id="@+id/homeFragment" android:name="com.pocraft.gassai.view.fragment.HomeFragment"
-              android:label="HomeFragment">
+    <fragment android:id="@+id/homeFragment" android:name="com.pocraft.gassai.view.fragment.FeedFragment"
+              android:label="FeedFragment">
         <action android:id="@+id/action_homeFragment_to_timeTableFragment"
                 app:destination="@id/timeTableFragment"/>
     </fragment>

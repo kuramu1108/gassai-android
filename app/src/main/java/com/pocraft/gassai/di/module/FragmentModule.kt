@@ -1,9 +1,6 @@
 package com.pocraft.gassai.di.module
 
-import com.pocraft.gassai.view.fragment.HomeFragment
-import com.pocraft.gassai.view.fragment.ReminderFragment
-import com.pocraft.gassai.view.fragment.TeamFragment
-import com.pocraft.gassai.view.fragment.TimeTableFragment
+import com.pocraft.gassai.view.fragment.*
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -20,4 +17,7 @@ abstract class FragmentModule {
 
     @ContributesAndroidInjector
     abstract fun bindReminderFragment(): ReminderFragment
+
+    @ContributesAndroidInjector
+    abstract fun bindFeedFragment(): FeedFragment
 }
