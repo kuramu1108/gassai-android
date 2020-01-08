@@ -14,7 +14,7 @@ class PostAdapter: ListAdapter<Post, PostAdapter.ViewHolder>(PostDiffCallback())
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = getItem(position)
+        val item = getItem(itemCount - position - 1)
         holder.bind(item)
     }
 

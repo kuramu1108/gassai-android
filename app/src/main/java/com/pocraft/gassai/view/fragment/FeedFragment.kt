@@ -7,7 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
 
 import com.pocraft.gassai.R
 import com.pocraft.gassai.databinding.FeedFragmentBinding
@@ -29,6 +31,8 @@ class FeedFragment : Fragment() {
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private val viewModel by lazyViewModel<FeedViewModel> { viewModelFactory }
 
+    private lateinit var adapter: PostAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidSupportInjection.inject(this)
         super.onCreate(savedInstanceState)
@@ -48,10 +52,11 @@ class FeedFragment : Fragment() {
 
         binding.lifecycleOwner = this
 
-        val adapter = PostAdapter()
+        adapter = PostAdapter()
         binding.postRecyclerview.adapter = adapter
 
-        adapter.submitList(dummyPosts)
+        adapter.submitList(listOf())
+
 
         return binding.root
     }
@@ -59,6 +64,9 @@ class FeedFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         // TODO: Use the ViewModel
+        viewModel.posts.observe(viewLifecycleOwner, Observer {
+            adapter.submitList(it)
+        })
     }
 
 }
