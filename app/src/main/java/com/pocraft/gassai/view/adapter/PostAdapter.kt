@@ -1,7 +1,9 @@
 package com.pocraft.gassai.view.adapter
 
+import android.animation.ObjectAnimator
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -21,6 +23,10 @@ class PostAdapter: ListAdapter<Post, PostAdapter.ViewHolder>(PostDiffCallback())
     class ViewHolder(val binding: ListItemPostFeedFragmentBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Post) {
             binding.post = item
+            binding.expandButton.setOnClickListener {
+                if (binding.textView.maxLines > 3) collapseTextView(binding.textView)
+                else expandTextView(binding.textView)
+            }
             binding.executePendingBindings()
         }
 
@@ -29,6 +35,22 @@ class PostAdapter: ListAdapter<Post, PostAdapter.ViewHolder>(PostDiffCallback())
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = ListItemPostFeedFragmentBinding.inflate(layoutInflater, parent, false)
                 return ViewHolder(binding)
+            }
+        }
+
+        fun expandTextView(view: TextView) {
+            val animation = ObjectAnimator.ofInt(view, "maxLines", view.lineCount)
+            animation.apply {
+                duration = 400
+                start()
+            }
+        }
+
+        fun collapseTextView(view: TextView) {
+            val animation = ObjectAnimator.ofInt(view, "maxLines", 3)
+            animation.apply {
+                duration = 400
+                start()
             }
         }
     }

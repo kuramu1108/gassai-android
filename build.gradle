@@ -11,6 +11,7 @@ buildscript {
         nav_version = '2.2.0-rc01'
         room_version = '2.2.0-rc01'
         gradle_version = '3.5.2'
+        glide_version = "4.10.0"
         databinding_compiler_version = gradle_version
     }
 

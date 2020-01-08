@@ -15,9 +15,7 @@ val dummyPosts = mutableListOf(
             "それぞれ自己紹介しあったり、がっ祭に向けての目標を発表し合いました。\n" +
             "これから実行委員一同楽しみながら準備を進めていきたいと思います\uD83D\uDCAA", "https://pbs.twimg.com/media/EFX3KZaVUAApGFJ?format=jpg&name=large"),
     Post(2, "連投失礼します！\n" +
-            "オマツリジャパン(\n" +
-            "@omatsurijapan\n" +
-            ")さんのホームページに九州がっ祭を掲載していただきました！\n" +
+            "オマツリジャパン(@omatsurijapan)さんのホームページに九州がっ祭を掲載していただきました！\n" +
             "こちらの方も合わせてチェックしてくださいね\uD83D\uDE0A\n" +
             "感想やお写真もお待ちしています！", null),
     Post(3, "こんばんは！\n" +
