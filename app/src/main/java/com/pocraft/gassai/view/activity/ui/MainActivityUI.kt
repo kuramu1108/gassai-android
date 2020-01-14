@@ -9,6 +9,7 @@ import com.pocraft.gassai.R
 import com.pocraft.gassai.util.bottomNavigationView
 import com.pocraft.gassai.view.activity.MainActivity
 import org.jetbrains.anko.*
+import org.jetbrains.anko.constraint.layout.constraintLayout
 import org.jetbrains.anko.design.coordinatorLayout
 
 class MainActivityUI: AnkoComponent<MainActivity> {
@@ -16,12 +17,11 @@ class MainActivityUI: AnkoComponent<MainActivity> {
 
     override fun createView(ui: AnkoContext<MainActivity>) = with(ui) {
         coordinatorLayout {
-            relativeLayout {
+            constraintLayout {
                 frameLayout {
                     id = R.id.container
-                }.lparams(width = matchParent) {
-                    alignParentTop()
-                    alignParentBottom()
+                }.lparams(width = matchParent, height = matchParent) {
+
                 }
             }.lparams(width = matchParent, height = matchParent)
 

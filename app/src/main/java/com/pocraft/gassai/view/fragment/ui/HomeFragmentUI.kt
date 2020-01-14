@@ -13,7 +13,7 @@ class HomeFragmentUI: AnkoComponent<HomeFragment> {
     lateinit var resultText: TextView
     override fun createView(ui: AnkoContext<HomeFragment>) = with(ui) {
         constraintLayout {
-            id = R.id.homeFragment
+            id = R.id.feedFragment
             textView = textView {
                 id = R.id.text_view
                 text = "home"

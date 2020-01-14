@@ -12,6 +12,7 @@ fun ImageView.setPostImageUrl(url: String?) {
     url?.let {
         Glide.with(context)
             .load(it)
+            .error(R.drawable.test)
             .into(this)
     } ?: run {
         Glide.with(context)

@@ -41,7 +41,7 @@ class PostAdapter: ListAdapter<Post, PostAdapter.ViewHolder>(PostDiffCallback())
         fun expandTextView(view: TextView) {
             val animation = ObjectAnimator.ofInt(view, "maxLines", view.lineCount)
             animation.apply {
-                duration = 400
+                duration = 200
                 start()
             }
         }
@@ -49,7 +49,7 @@ class PostAdapter: ListAdapter<Post, PostAdapter.ViewHolder>(PostDiffCallback())
         fun collapseTextView(view: TextView) {
             val animation = ObjectAnimator.ofInt(view, "maxLines", 3)
             animation.apply {
-                duration = 400
+                duration = 200
                 start()
             }
         }

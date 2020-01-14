@@ -56,7 +56,9 @@ class FeedFragment : Fragment() {
         binding.postRecyclerview.adapter = adapter
 
         adapter.submitList(listOf())
-
+//        viewModel.posts.observe(viewLifecycleOwner, Observer {
+//            adapter.submitList(it)
+//        })
 
         return binding.root
     }
@@ -64,9 +66,7 @@ class FeedFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         // TODO: Use the ViewModel
-        viewModel.posts.observe(viewLifecycleOwner, Observer {
-            adapter.submitList(it)
-        })
+
     }
 
 }
