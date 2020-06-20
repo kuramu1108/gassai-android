@@ -33,7 +33,8 @@ class MainActivityUI: AnkoComponent<MainActivity> {
                 labelVisibilityMode = LabelVisibilityMode.LABEL_VISIBILITY_LABELED
                 itemIconTintList = resources.getColorStateList(R.color.nav_btn_color, null)
                 itemTextColor = resources.getColorStateList(R.color.nav_btn_color, null)
-            }.lparams(width = matchParent, height = dip(64)) {
+                elevation = 8f
+            }.lparams(width = matchParent, height = dip(56)) {
                 gravity = Gravity.BOTTOM
                 behavior = HideBottomViewOnScrollBehavior<BottomNavigationView>()
             }
