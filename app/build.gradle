@@ -50,8 +50,10 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
 
     // AndroidX Navigation
-    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version" // For Kotlin use navigation-fragment-ktx
-    implementation "androidx.navigation:navigation-ui-ktx:$nav_version" // For Kotlin use navigation-ui-ktx
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    // For Kotlin use navigation-fragment-ktx
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+    // For Kotlin use navigation-ui-ktx
 
     // AndroidX ViewPager2
     implementation 'androidx.viewpager2:viewpager2:1.1.0-alpha01'
@@ -82,7 +84,8 @@ dependencies {
     implementation "org.jetbrains.anko:anko-commons:$anko_version"
 
     // Anko Layouts
-    implementation "org.jetbrains.anko:anko-sdk25:$anko_version" // sdk15, sdk19, sdk21, sdk23 are also available
+    implementation "org.jetbrains.anko:anko-sdk25:$anko_version"
+    // sdk15, sdk19, sdk21, sdk23 are also available
     implementation "org.jetbrains.anko:anko-appcompat-v7:$anko_version"
     implementation "org.jetbrains.anko:anko-recyclerview-v7:$anko_version"
     implementation "org.jetbrains.anko:anko-cardview-v7:$anko_version"
@@ -93,6 +96,11 @@ dependencies {
     implementation "androidx.room:room-ktx:$room_version"
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
+
+    // Glide
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
+    implementation "com.github.bumptech.glide:recyclerview-integration:$glide_version"
 
     // Spark Button https://github.com/varunest/SparkButton
     implementation 'com.github.varunest:sparkbutton:1.0.6'
