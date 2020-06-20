@@ -2,6 +2,7 @@ package com.pocraft.gassai.di.module
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.pocraft.gassai.viewmodel.FeedViewModel
 import com.pocraft.gassai.viewmodel.TimeTableViewModel
 import dagger.Binds
 import dagger.MapKey
@@ -29,4 +30,9 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(TimeTableViewModel::class)
     internal abstract fun bindTimeTableViewModel(viewModel: TimeTableViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(FeedViewModel::class)
+    internal abstract fun bindFeedViewModel(viewModel: FeedViewModel): ViewModel
 }

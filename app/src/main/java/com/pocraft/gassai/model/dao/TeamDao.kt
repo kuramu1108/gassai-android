@@ -3,14 +3,16 @@ package com.pocraft.gassai.model.dao
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.pocraft.gassai.model.Team
+import com.pocraft.gassai.model.db.TableVersion
+import kotlinx.coroutines.Deferred
 
 // ref https://medium.com/@marco_cattaneo/integrate-dagger-2-with-room-persistence-library-in-few-lines-abf48328eaeb
 
 @Dao
 interface TeamDao {
     @Query("SELECT * FROM teams ORDER BY id ASC")
-    suspend fun getAll(): List<Team>
-//    fun getAll(): LiveData<List<Team>>
+//    suspend fun getAll(): List<Team>
+    fun getAll(): LiveData<List<Team>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(team: Team)
@@ -23,4 +25,10 @@ interface TeamDao {
 
     @Update
     fun update(team: Team)
+
+    @Query("SELECT * FROM table_version WHERE tableName = 'teams'")
+    suspend fun getTableVersion(): TableVersion?
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertTableVersion(tableVersion: TableVersion)
 }

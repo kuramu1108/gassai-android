@@ -20,4 +20,6 @@
     <item name="team_top_image" type="id" />
     <item name="reminder_test" type="id" />
     <item name="team_collapsing_tool_bar" type="id" />
+    <item name="team_fragment_overlay" type="id" />
+    <item name="team_fragment_progressbar" type="id" />
 </resources>

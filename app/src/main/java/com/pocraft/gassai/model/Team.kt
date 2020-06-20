@@ -1,9 +1,7 @@
 package com.pocraft.gassai.model
 
-import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "teams")
 data class Team (
@@ -14,5 +12,7 @@ data class Team (
     var participation: Int,
     var description: String,
 //    @ColumnInfo
-    var isFavorite: Boolean
-)
+    var isFavorite: Boolean = false
+) {
+    fun isIdentical(t: Team) = id == t.id && name == t.name && participation == t.participation
+}
